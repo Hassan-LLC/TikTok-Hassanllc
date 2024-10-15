@@ -8,27 +8,27 @@ To install the necessary dependencies for this project, follow these steps:
    ```bash
    git clone https://github.com/Hassan-LLC/TikTok-Hassanllc.git
 
-2. cd TikTok-Hassanllc
+2.   cd TikTok-Hassanllc
 
-3. pip install -r requirements.txt
+3.     pip install -r requirements.txt
 
-4.  python bot.py
+4.        python bot.py
 
 
 
 {Requirements}
-@selenium==4.11.0 
 
 
-geckodriver.exe
+{__________selenium==4.11.0________}
+
+
+{_________geckodriver.exe_______}
+
+
+{_________Python 3.10 or higher________}
 
 
 
-
-Python 3.10 or higher
-
-
-
-pip version 21.2.3 or higher
+{__________pip version 21.2.3 or higher________}
 
 
