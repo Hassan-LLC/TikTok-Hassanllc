@@ -4,7 +4,9 @@ from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 
 class Bot:
@@ -28,12 +30,18 @@ class Bot:
         self._start_service(service, video_url)
 
     def _print_banner(self):
-        print("+--------------------------------------------------------+")
-        print("|                                                        |")
-        print("|   Made by : Simon Farah                                |")
-        print("|   Github  : https://github.com/simonfarah/tiktok-bot   |")
-        print("|                                                        |")
-        print("+--------------------------------------------------------+")
+        print("# ========================================================")
+        print("#  ____  _           _      _   _       _             #")
+        print("# |  _ \\| |         | |    | | | |     | |            #")
+        print("# | |_) | | ___  ___| |__  | |_| | ___ | |__  _   _    #")
+        print("# |  _ <| |/ _ \\/ __| '_ \\ |  _  |/ _ \\| '_ \\| | | |   #")
+        print("# | |_) | |  __/ (__| | | || | | | (_) | |_) | |_| |   #")
+        print("# |____/|_|\\___|\\___|_| |_| |_| |_|\\___/|_.__/ \\__, |   #")
+        print("#                                              __/ |   #")
+        print("#                                             |___/    #")
+        print("#                       Made by: Hassan                       #")
+        print("#                       GitHub: https://github.com/Zohaib/TikTok-Hassanllc   #")
+        print("# ========================================================\n")
         print("\n")
 
     def _init_driver(self):
@@ -159,8 +167,9 @@ class Bot:
 
     def _start_service(self, service, video_url):
         print("[~] Starting service...")  # Debugging statement
+        
         # Click on the corresponding service button
-        self._wait_for_element(By.CLASS_NAME, self.services[service]["selector"]).click()
+        self._wait_and_click(By.CLASS_NAME, self.services[service]["selector"])
 
         # Get the container of the selected service
         container = self._wait_for_element(By.CSS_SELECTOR, "div.col-sm-5.col-xs-12.p-1.container:not(.nonec)")
@@ -177,13 +186,13 @@ class Bot:
 
         while True:
             # Click the search button
-            container.find_element(By.CSS_SELECTOR, "button.btn.btn-primary").click()
+            self._wait_and_click(By.CSS_SELECTOR, "button.btn.btn-primary")
 
             sleep(3)
 
             # Click the submit button if it's present, otherwise pass
             try:
-                container.find_element(By.CSS_SELECTOR, "button.btn.btn-dark").click()
+                self._wait_and_click(By.CSS_SELECTOR, "button.btn.btn-dark")
                 print("[~] {} sent successfully".format(self.services[service]["title"]))
             except NoSuchElementException:
                 pass
@@ -217,12 +226,23 @@ class Bot:
             return None
 
     def _wait_for_element(self, by, value):
-        while True:
-            try:
-                element = self.driver.find_element(by, value)
-                return element
-            except NoSuchElementException:
-                sleep(1)
+        try:
+            element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((by, value))
+            )
+            return element
+        except TimeoutException:
+            print(f"[x] Element with {by}='{value}' not found.")
+            return None
+
+    def _wait_and_click(self, by, value):
+        try:
+            element = self._wait_for_element(by, value)
+            if element:
+                self.driver.execute_script("arguments[0].scrollIntoView();", element)
+                element.click()
+        except Exception as e:
+            print(f"[x] Error clicking element with {by}='{value}': {e}")
 
 
 if __name__ == "__main__":
