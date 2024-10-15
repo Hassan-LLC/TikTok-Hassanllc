@@ -34,9 +34,9 @@ To install the necessary dependencies for this project, follow these steps:
 
 
 
-   NOTE ;[-_______ PROJECT FOR TIKTOK VIEW BOT 
+   NOTE {_______ PROJECT FOR TIKTOK VIEW BOT______}
 
-  1                fast, easy
+  1                            fast, easy
 
   2.               lightweight
 
