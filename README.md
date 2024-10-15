@@ -8,7 +8,7 @@ To install the necessary dependencies for this project, follow these steps:
    ```bash
    git clone https://github.com/Hassan-LLC/TikTok-Hassanllc.git
 
-2.   cd TikTok-Hassanllc
+2.       cd TikTok-Hassanllc
 
 3.     pip install -r requirements.txt
 
