@@ -16,9 +16,19 @@ To install the necessary dependencies for this project, follow these steps:
 
 
 
-Requirements
-selenium==4.11.0
+{Requirements}
+@selenium==4.11.0 
+
+
 geckodriver.exe
+
+
+
+
 Python 3.10 or higher
+
+
+
 pip version 21.2.3 or higher
+
 
