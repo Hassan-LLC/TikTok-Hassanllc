@@ -36,9 +36,12 @@ To install the necessary dependencies for this project, follow these steps:
 
    NOTE ;[-_______ PROJECT FOR TIKTOK VIEW BOT 
 
-  1    fast, easy
-  2.  lightweight
-  3.  Has dynamic views count running on TikTok API
-  4.  mobile users can run it
+  1                fast, easy
+
+  2.               lightweight
+
+  3.              Has dynamic views count running on TikTok API
+
+  4.                mobile users can run it
 
 
